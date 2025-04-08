@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 16:47:00 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 17:16:37 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_data
 {
 	t_philo			*philos;
 	pthread_t		*threads;
+	pthread_mutex_t	mutex;
 	unsigned int	philo_count;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
