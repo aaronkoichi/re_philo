@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:53:24 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 15:30:23 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 16:14:01 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!data_init(&data, argc, argv))
 		return (0);
+	// DO SOMETHING
+	free(data.philos);
+	return (0);
 }

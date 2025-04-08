@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 15:30:42 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 16:00:54 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int check_args(int argc, char **argv)
 
 static void	philo_init(t_data *data)
 {
-	int	i;
+	unsigned int	i;
 
-	i = -1;
-	while (++i < data->philo_count)
+	i = 0;
+	while (i < data->philo_count)
 	{
 		data->philos[i].philo_num = i;
 		data->philos[i].fork.left = true;
-		data->philos[i].fork.right = true;
+		data->philos[i++].fork.right = true;
 	}
 }
 

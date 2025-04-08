@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 15:21:41 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 15:58:09 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_data
 /*philo_utils.c*/
 unsigned int	ft_atoi(const char *nptr);
 /*philo_utils_two.c*/
-int 			check_args(int argc, char **argv);
+int				check_args(int argc, char **argv);
 int				data_init(t_data *data, int ac, char **av);
+
 #endif
