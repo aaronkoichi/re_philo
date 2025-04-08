@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 17:16:37 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 17:48:43 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 /*Struct for fork*/
 typedef struct s_fork
 {
-	bool	left;
-	bool	right;
+	pthread_mutex_t	left;
+	pthread_mutex_t	right;
 }	t_fork;
 
 /*Enum for actions*/
@@ -46,7 +46,6 @@ typedef struct s_data
 {
 	t_philo			*philos;
 	pthread_t		*threads;
-	pthread_mutex_t	mutex;
 	unsigned int	philo_count;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
