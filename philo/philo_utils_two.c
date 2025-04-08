@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 16:00:54 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/08 16:46:08 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	philo_init(t_data *data)
 	while (i < data->philo_count)
 	{
 		data->philos[i].philo_num = i;
+		data->philos[i].action = THINK;
 		data->philos[i].fork.left = true;
 		data->philos[i++].fork.right = true;
 	}
@@ -40,6 +41,7 @@ int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
 	data->philos = (t_philo *)malloc(data->philo_count * sizeof(t_philo));
+	data->threads = (pthread_t *)malloc(data->philo_count * sizeof(pthread_t));
 	if (!data->philos)
 		return (0);
 	data->time_to_die = ft_atoi(av[2]);
