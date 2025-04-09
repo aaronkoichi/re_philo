@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/08 16:45:58 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 16:34:46 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ unsigned int	ft_atoi(const char *nptr)
 	while (nptr[index] >= '0' && nptr[index] <= '9')
 		total = (total * 10) + (nptr[index++] - 48);
 	return (total * multiple);
+}
+
+void	ft_usleep(unsigned int sleep, int *ms)
+{
+	usleep(sleep);
+	(*ms)++;
 }
