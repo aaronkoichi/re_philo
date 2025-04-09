@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 16:17:52 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 17:22:54 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ static void	philo_init(t_data *data, int ac, char **av)
 		data->philos[i].time_to_die = ft_atoi(av[2]);
 		data->philos[i].time_to_eat = ft_atoi(av[3]);
 		data->philos[i].time_to_sleep = ft_atoi(av[4]);
-		if (ac == 6)
-			data->philos[i].food_count = 0;
+		data->philos[i].p_ms = 0;
+		data->philos[i].food_count = 0;
+		data->philos[i].g_ms = &data->ms;
 	}
 }
 
@@ -45,6 +46,7 @@ int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
 	*(data->dead_int) = 0;
+	data->ms = 0;
 	data->philos = (t_philo *)malloc(data->philo_count * sizeof(t_philo));
 	if (!data->philos)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 16:34:35 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 17:41:39 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_philo
 	unsigned int	time_to_sleep;
 	unsigned int	food_count;
 	int				*term_count;
+	unsigned int	*g_ms;
+	int				p_ms;
 }	t_philo;
 
 /*Struct for Storing general data*/
@@ -56,6 +58,7 @@ typedef struct s_data
 	int				*dead_int;
 	unsigned int	philo_count;
 	unsigned int	food_count;
+	unsigned int	ms;
 }	t_data;
 
 /*Functions*/
@@ -70,4 +73,5 @@ int				data_init(t_data *data, int ac, char **av);
 void			set_all_forks(t_data *data);
 /*philo_simulation.c*/
 void			*simulation(void *args);
+void			*monitor(void *args);
 #endif
