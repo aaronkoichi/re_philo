@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 17:22:54 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 20:50:46 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	philo_init(t_data *data, int ac, char **av)
 	while (i < data->philo_count)
 	{
 		data->philos[i].philo_num = i;
-		data->philos[i].term_count = data->dead_int;
+		data->philos[i].term_count = &(data->dead_int);
 		data->philos[i].action = THINK;
 		data->philos[i].time_to_die = ft_atoi(av[2]);
 		data->philos[i].time_to_eat = ft_atoi(av[3]);
@@ -45,7 +45,7 @@ static void	philo_init(t_data *data, int ac, char **av)
 int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
-	*(data->dead_int) = 0;
+	data->dead_int = 0;
 	data->ms = 0;
 	data->philos = (t_philo *)malloc(data->philo_count * sizeof(t_philo));
 	if (!data->philos)

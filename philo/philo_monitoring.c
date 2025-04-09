@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 17:53:08 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 20:50:22 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	*monitor(void *args)
 	int		count;
 	
 	data = (t_data *)args;
-	while (*(data->dead_int) != 1)
+	while (data->dead_int != 1)
 	{
 		count = 0;
 		while (count < data->philo_count)
 			check_state(&data->philos[count++]);
 		if (data->meals == true)
 			if (check_meals(data))
-				*(data->dead_int) = 1;
+				data->dead_int= 1;
 		ft_usleep(1, args);
 	}
 	return (NULL);

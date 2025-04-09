@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 17:43:56 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/09 20:50:00 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ enum e_action{
 };
 
 /* Struct for storing philo data. */
+/*Note: Dead int is the same as term_count*/
 typedef struct s_philo
 {
 	unsigned int	philo_num;
@@ -55,7 +56,7 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_t		*threads;
 	pthread_t		monitor_thread;
-	int				*dead_int;
+	int				dead_int;
 	unsigned int	philo_count;
 	unsigned int	food_count;
 	unsigned int	ms;
