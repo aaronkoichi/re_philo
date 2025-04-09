@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/08 16:45:00 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/09 17:45:39 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,11 @@ INCLUDES = -Iincludes
 
 SRCS = philo_utils.c \
 	   philo_utils_two.c \
-		philo_main.c
+	   philo_main.c \
+	   philo_set_forks.c \
+	   philo_monitoring.c \
+	   philo_simulation.c \
+	   philo_threads.c \
 
 OBJS = $(SRCS:.c=.o)
 
