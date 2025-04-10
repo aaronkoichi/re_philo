@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/09 17:45:39 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/10 15:37:22 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean re
+re: fclean all
 
 .PHONY : all clean fclean re

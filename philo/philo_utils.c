@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 17:21:00 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 15:35:17 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ unsigned int	ft_atoi(const char *nptr)
 	return (total * multiple);
 }
 
-void	ft_usleep(unsigned int sleep, int *ms)
+void	ft_usleep(unsigned int sleep, unsigned int *ms)
 {
 	usleep(sleep);
 	(*ms)++;

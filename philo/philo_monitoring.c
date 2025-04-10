@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 20:50:22 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 15:33:04 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	check_state(t_philo *philo)
 		if (philo->p_ms >= philo->time_to_die)
 		{
 			printf("%d %d died\n", *philo->g_ms, philo->philo_num);
-			*(philo->term_count) = 1;
+			*(philo->dead_int) = 1;
 		}
 }
 
@@ -39,8 +39,8 @@ static int	check_meals(t_data *data)
  * their number of meals.*/
 void	*monitor(void *args)
 {
-	t_data	*data;
-	int		count;
+	t_data				*data;
+	unsigned int		count;
 	
 	data = (t_data *)args;
 	while (data->dead_int != 1)
