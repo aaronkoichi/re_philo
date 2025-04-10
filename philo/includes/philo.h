@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:41:23 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 22:48:46 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,19 @@ typedef struct s_ms
 	pthread_mutex_t	lock;
 }	t_ms;
 
+typedef struct s_action
+{
+	enum e_action	action;
+	pthread_mutex_t	lock;
+}	t_action;
+
 /* Struct for storing philo data. */
-/*Note: Dead int is the same as term_count*/
 typedef struct s_philo
 {
 	unsigned int	philo_num;
 	pthread_t		thread;
 	t_fork			fork;
-	enum e_action	action;
+	t_action		action;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
@@ -106,8 +111,11 @@ int				get_status(t_philo *philo);
 unsigned int	get_food_count(t_philo *philo);
 int				get_data_status(t_data *data);
 long			get_ms_passed(t_philo *philo);
+/*philo_utils_getter_two.c*/
+enum e_action	get_action(t_philo *philo);
 /*philo_utils_setter.c*/
 void			set_status(t_philo *philo, int num);
 void			set_food_count(t_philo *philo, int num);
 void			set_data_status(t_data *data, int num);
+void			set_action(t_philo *philo, enum e_action act);
 #endif

@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:22:27 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 22:50:14 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void p_doom_sleep(t_philo *phi)
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
-		phi->action = THINK;
-		phi->action = SLEEP;
+		set_action(phi, THINK);
+		set_action(phi, SLEEP);
 		ft_usleep(10, &phi->p_ms);
 	}
 }
@@ -54,10 +54,11 @@ static void	p_think_eat(t_philo *phi)
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
-		phi->action = THINK;
+		set_action(phi, THINK);
 		printf("%d %d is thinking\n", get_ms(phi), phi->philo_num);
 		p_pickup_fork(phi);
-		phi->action = EAT;
+		set_action(phi, EAT);
+		printf("%d %d is thinking\n", get_ms(phi), phi->philo_num);
 		phi->p_ms = 0;
 		printf("%d %d is eating\n", get_ms(phi), phi->philo_num);
 		ft_usleep(phi->time_to_eat, &phi->p_ms);
@@ -65,7 +66,6 @@ static void	p_think_eat(t_philo *phi)
 		pthread_mutex_unlock(&phi->fork.left);
 		pthread_mutex_unlock(&phi->fork.right);
 	}
-	return ;
 }
 
 /*sleeping state*/
@@ -76,7 +76,7 @@ static void	p_sleep(t_philo *phi)
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
-		phi->action = SLEEP;
+		set_action(phi, SLEEP);
 		phi->p_ms = 0;
 		printf("%d %d is sleeping\n", get_ms(phi), phi->philo_num);
 		ft_usleep(phi->time_to_sleep, &phi->p_ms);

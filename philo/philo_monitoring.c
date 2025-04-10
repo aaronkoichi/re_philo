@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:21:47 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 22:52:31 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * the counter for each philo.*/
 static void	check_state(t_philo *philo)
 {
-	if (philo->action == THINK)
+	if (get_status(philo) == THINK)
 		if (philo->p_ms >= philo->time_to_die)
 		{
 			printf("%d %d died\n", get_ms(philo), philo->philo_num);
