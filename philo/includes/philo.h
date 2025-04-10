@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:20:47 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 18:41:23 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 # include <stdbool.h>
 # include <pthread.h>
 
@@ -50,7 +51,7 @@ typedef struct s_dead
 /*Struct to mark the miliseconds that has passed.*/
 typedef struct s_ms
 {
-	unsigned int	ms;
+	long			ms;
 	pthread_mutex_t	lock;
 }	t_ms;
 
@@ -88,6 +89,7 @@ typedef struct s_data
 /*philo_utils.c*/
 unsigned int	ft_atoi(const char *nptr);
 void			ft_usleep(unsigned int sleep, unsigned int *ms);
+long			get_current_ms(void);
 /*philo_utils_two.c*/
 int				check_args(int argc, char **argv);
 int				data_init(t_data *data, int ac, char **av);
@@ -103,6 +105,7 @@ unsigned int	get_ms(t_philo *philo);
 int				get_status(t_philo *philo);
 unsigned int	get_food_count(t_philo *philo);
 int				get_data_status(t_data *data);
+long			get_ms_passed(t_philo *philo);
 /*philo_utils_setter.c*/
 void			set_status(t_philo *philo, int num);
 void			set_food_count(t_philo *philo, int num);

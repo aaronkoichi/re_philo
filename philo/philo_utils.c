@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 16:14:01 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 18:44:04 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ void	ft_usleep(unsigned int sleep, unsigned int *ms)
 		(*ms)++;
 		i++;
 	}
+}
+
+long	get_current_ms(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
