@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 15:35:29 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/10 18:20:47 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,41 @@ enum e_action{
 	SLEEP
 };
 
+/*Struct for food*/
+typedef struct	s_food
+{
+	unsigned int	count;
+	pthread_mutex_t	lock;
+}	t_food;
+
+/*Struct to mark the status of dead*/
+typedef struct s_dead
+{
+	int				dead_int;
+	pthread_mutex_t	lock;
+}	t_dead;
+
+/*Struct to mark the miliseconds that has passed.*/
+typedef struct s_ms
+{
+	unsigned int	ms;
+	pthread_mutex_t	lock;
+}	t_ms;
+
 /* Struct for storing philo data. */
 /*Note: Dead int is the same as term_count*/
 typedef struct s_philo
 {
 	unsigned int	philo_num;
+	pthread_t		thread;
 	t_fork			fork;
 	enum e_action	action;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
-	unsigned int	food_count;
-	int				*dead_int;
-	unsigned int	*g_ms;
+	t_food			food_count;
+	t_dead			*status;
+	t_ms			*g_ms;
 	unsigned int	p_ms;
 }	t_philo;
 
@@ -54,12 +76,11 @@ typedef struct s_data
 {
 	bool			meals;
 	t_philo			*philos;
-	pthread_t		*threads;
 	pthread_t		monitor_thread;
-	int				dead_int;
+	t_dead			status;
 	unsigned int	philo_count;
-	unsigned int	food_count;
-	unsigned int	ms;
+	unsigned int	total_food;
+	t_ms			ms;
 }	t_data;
 
 /*Functions*/
@@ -77,4 +98,13 @@ void			*simulation(void *args);
 void			*monitor(void *args);
 /*philo_threads.c*/
 int				create_thread(t_data *data);
+/*philo_utils_getter.c*/
+unsigned int	get_ms(t_philo *philo);
+int				get_status(t_philo *philo);
+unsigned int	get_food_count(t_philo *philo);
+int				get_data_status(t_data *data);
+/*philo_utils_setter.c*/
+void			set_status(t_philo *philo, int num);
+void			set_food_count(t_philo *philo, int num);
+void			set_data_status(t_data *data, int num);
 #endif
