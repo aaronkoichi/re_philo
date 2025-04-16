@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:40:42 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:15:37 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ static void	p_pickup_fork(t_philo *phi)
 	if (!(phi->philo_num % 2))
 	{
 		pthread_mutex_lock(&phi->fork.left);
-		printf("%d %d has taken a fork\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 		pthread_mutex_lock(&phi->fork.right);
-		printf("%d %d has taken a fork\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 	}
 	else
 	{
 		pthread_mutex_lock(&phi->fork.right);
-		printf("%d %d has taken a fork\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 		pthread_mutex_lock(&phi->fork.left);
-		printf("%d %d has taken a fork\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 	}
 }
 
@@ -55,11 +55,11 @@ static void	p_think_eat(t_philo *phi)
 	if (dead_check != 1)
 	{
 		set_action(phi, THINK);
-		printf("%d %d is thinking\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d is thinking\n", get_ms_passed_global(phi), phi->philo_num);
 		p_pickup_fork(phi);
 		set_action(phi, EAT);
-		printf("%d %d is thinking\n", get_global_ms(phi), phi->philo_num);
-		printf("%d %d is eating\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d is thinking\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d is eating\n", get_ms_passed_global(phi), phi->philo_num);
 		usleep(phi->time_to_eat);
 		set_food_count(phi, get_food_count(phi));
 		set_philo_ms(phi, get_current_ms());
@@ -77,7 +77,7 @@ static void	p_sleep(t_philo *phi)
 	if (dead_check != 1)
 	{
 		set_action(phi, SLEEP);
-		printf("%d %d is sleeping\n", get_global_ms(phi), phi->philo_num);
+		printf("%d %d is sleeping\n", get_ms_passed_global(phi), phi->philo_num);
 		usleep(phi->time_to_sleep);
 	}
 }
@@ -90,8 +90,8 @@ void	*simulation(void *args)
 	t_philo		*philo;
 	int			dead_check;
 
-	dead_check = get_status(philo);
 	philo = (t_philo *)args;
+	dead_check = get_status(philo);
 	while (dead_check != 1)
 	{
 		p_think_eat(philo);

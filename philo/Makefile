@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/10 15:37:22 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/16 15:54:19 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,16 @@ CFLAGS = -Wall -Wextra -Werror -g -pthread
 INCLUDES = -Iincludes
 
 SRCS = philo_utils.c \
-	   philo_utils_two.c \
-	   philo_main.c \
-	   philo_set_forks.c \
 	   philo_monitoring.c \
+	   philo_set_forks.c \
 	   philo_simulation.c \
 	   philo_threads.c \
+	   philo_utils_two.c \
+	   philo_main.c \
+	   philo_utils_getter.c \
+	   philo_utils_getter_ms.c \
+	   philo_utils_getter_two.c \
+	   philo_utils_setter.c \
 
 OBJS = $(SRCS:.c=.o)
 
