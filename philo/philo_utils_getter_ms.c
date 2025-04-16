@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:29:35 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 16:49:03 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 18:09:07 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,15 @@ unsigned int	get_global_ms(t_philo *philo)
 	return (ms);
 }
 
+unsigned int	get_current_ms(pthread_mutex_t	*lock)
+{
+	struct timeval	tv;
+	unsigned int	current;
+
+	current = 0;
+	pthread_mutex_lock(lock);
+	gettimeofday(&tv, NULL);
+	current = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+	pthread_mutex_unlock(lock);
+	return (current);
+}

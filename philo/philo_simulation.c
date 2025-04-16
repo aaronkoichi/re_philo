@@ -6,11 +6,12 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 16:54:51 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 21:52:59 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdio.h>
 
 /*After they done sleeping, let them sleep again for a bit.
  * No Need to announce*/
@@ -32,16 +33,16 @@ static void	p_pickup_fork(t_philo *phi)
 {
 	if (!(phi->philo_num % 2))
 	{
-		pthread_mutex_lock(&phi->fork.left);
+		pthread_mutex_lock(phi->fork.left);
 		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
-		pthread_mutex_lock(&phi->fork.right);
+		pthread_mutex_lock(phi->fork.right);
 		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 	}
 	else
 	{
-		pthread_mutex_lock(&phi->fork.right);
+		pthread_mutex_lock(phi->fork.right);
 		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
-		pthread_mutex_lock(&phi->fork.left);
+		pthread_mutex_lock(phi->fork.left);
 		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
 	}
 }
@@ -70,8 +71,8 @@ static void	p_sleep(t_philo *phi)
 {
 	int	dead_check;
 
-	pthread_mutex_unlock(&phi->fork.left);
-	pthread_mutex_unlock(&phi->fork.right);
+	pthread_mutex_unlock(phi->fork.left);
+	pthread_mutex_unlock(phi->fork.right);
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
@@ -96,6 +97,15 @@ void	*simulation(void *args)
 		p_think_eat(philo);
 		p_sleep(philo);
 		p_doom_sleep(philo);
+		// DEBUG
+		// printf("diu nei nig\n");
+		// pthread_mutex_lock(philo->fork.left);
+		// pthread_mutex_lock(philo->fork.right);
+		// usleep(50000);
+		// pthread_mutex_unlock(philo->fork.left);
+		// pthread_mutex_unlock(philo->fork.right);
+		// printf("philo %d\n", philo->philo_num);
+		// DEBUG END
 		dead_check = get_status(philo);
 	}
 	return (NULL);

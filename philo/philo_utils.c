@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 16:58:48 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 18:09:03 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,4 @@ void	ft_usleep(unsigned int sleep, unsigned int *ms)
 		(*ms)++;
 		i++;
 	}
-}
-
-unsigned int	get_current_ms(pthread_mutex_t	*lock)
-{
-	struct timeval	tv;
-	unsigned int	current;
-
-	current = 0;
-	pthread_mutex_lock(lock);
-	gettimeofday(&tv, NULL);
-	current = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
-	pthread_mutex_unlock(lock);
-	return (current);
 }

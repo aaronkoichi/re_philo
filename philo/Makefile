@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/16 15:54:19 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/16 21:50:55 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS =  -g -pthread
 
-# MEM_CHECK = -fsanitize=address -fsanitize=undefined -fsanitize
+MEM_CHECK = -fsanitize=undefined -fsanitize=address
 
 INCLUDES = -Iincludes
 
