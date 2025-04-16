@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_utils_getter_two.c                           :+:      :+:    :+:   */
+/*   philo_utils_getter_ms.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 22:46:25 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:24:10 by zlee             ###   ########.fr       */
+/*   Created: 2025/04/16 15:29:35 by zlee              #+#    #+#             */
+/*   Updated: 2025/04/16 15:38:36 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdint.h>
 
-enum e_action	get_action(t_philo *philo)
-{
-	enum e_action	action;
-
-	pthread_mutex_lock(&philo->action.lock);
-	action = philo->action.action;
-	pthread_mutex_unlock(&philo->action.lock);
-	return (action);
-}
-
-unsigned int	get_philo_ms(t_philo *philo)
+unsigned int	get_ms_passed_philo(t_philo phi)
 {
 	unsigned int	ms;
 
-	pthread_mutex_lock(&philo->p_ms.lock);
-	ms = philo->p_ms.ms;
-	pthread_mutex_unlock(&philo->p_ms.lock);
+	ms = get_current_ms() - get_philo_ms(&phi);
 	return (ms);
+}
+
+unsigned int	get_ms_passed_global(t_philo *philo)
+{
+	return (get_current_ms() - get_global_ms(philo));
 }

@@ -6,12 +6,13 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 22:48:46 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 15:38:23 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+#include <stdint.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -33,6 +34,15 @@ enum e_action{
 	EAT,
 	SLEEP
 };
+
+/*Struct for ready status
+ * --> To check if all threads are ready (so to start the
+ *  action concurrently.)*/
+typedef struct s_ready
+{
+	bool			status;
+	pthread_mutex_t	lock;
+}	t_ready;
 
 /*Struct for food*/
 typedef struct	s_food
@@ -73,8 +83,8 @@ typedef struct s_philo
 	unsigned int	time_to_sleep;
 	t_food			food_count;
 	t_dead			*status;
+	t_ms			p_ms;
 	t_ms			*g_ms;
-	unsigned int	p_ms;
 }	t_philo;
 
 /*Struct for Storing general data*/
@@ -94,7 +104,7 @@ typedef struct s_data
 /*philo_utils.c*/
 unsigned int	ft_atoi(const char *nptr);
 void			ft_usleep(unsigned int sleep, unsigned int *ms);
-long			get_current_ms(void);
+unsigned int	get_current_ms(void);
 /*philo_utils_two.c*/
 int				check_args(int argc, char **argv);
 int				data_init(t_data *data, int ac, char **av);
@@ -106,16 +116,20 @@ void			*monitor(void *args);
 /*philo_threads.c*/
 int				create_thread(t_data *data);
 /*philo_utils_getter.c*/
-unsigned int	get_ms(t_philo *philo);
 int				get_status(t_philo *philo);
 unsigned int	get_food_count(t_philo *philo);
 int				get_data_status(t_data *data);
-long			get_ms_passed(t_philo *philo);
 /*philo_utils_getter_two.c*/
 enum e_action	get_action(t_philo *philo);
 /*philo_utils_setter.c*/
+void			set_philo_ms(t_philo *philo, unsigned int ms);
 void			set_status(t_philo *philo, int num);
 void			set_food_count(t_philo *philo, int num);
 void			set_data_status(t_data *data, int num);
 void			set_action(t_philo *philo, enum e_action act);
+/*philo_utils_getter_ms.c*/
+unsigned int	get_global_ms(t_philo *philo);
+unsigned int	get_philo_ms(t_philo *philo);
+unsigned int	get_ms_passed_global(t_philo *philo);
+unsigned int	get_ms_passed_philo(t_philo phi);
 #endif

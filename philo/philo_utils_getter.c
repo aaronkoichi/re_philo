@@ -6,13 +6,13 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:25:39 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:48:53 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 15:37:26 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-unsigned int	get_ms(t_philo *philo)
+unsigned int	get_global_ms(t_philo *philo)
 {
 	unsigned int	ms;
 
@@ -52,7 +52,3 @@ int	get_data_status(t_data *data)
 	return (status);
 }
 
-long	get_ms_passed(t_philo *philo)
-{
-	return (get_ms(philo) - get_current_ms());
-}

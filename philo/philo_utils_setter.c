@@ -6,11 +6,12 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:51:00 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 22:45:18 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 15:07:58 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <unistd.h>
 
 void	set_status(t_philo *philo, int num)
 {
@@ -38,4 +39,11 @@ void	set_action(t_philo *philo, enum e_action act)
 	pthread_mutex_lock(&philo->action.lock);
 	philo->action.action = act;
 	pthread_mutex_unlock(&philo->action.lock);
+}
+
+void	set_philo_ms(t_philo *philo, unsigned int ms)
+{
+	pthread_mutex_lock(&philo->p_ms.lock);
+	philo->p_ms.ms = ms;
+	pthread_mutex_unlock(&philo->p_ms.lock);
 }

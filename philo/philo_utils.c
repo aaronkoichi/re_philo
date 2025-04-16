@@ -6,11 +6,12 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 18:44:04 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 15:06:17 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <stdint.h>
 
 static unsigned int	count_ws(const char *nptr)
 {
@@ -51,7 +52,7 @@ void	ft_usleep(unsigned int sleep, unsigned int *ms)
 	}
 }
 
-long	get_current_ms(void)
+unsigned int	get_current_ms(void)
 {
 	struct timeval	tv;
 

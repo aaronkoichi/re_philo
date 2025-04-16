@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 22:52:31 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 15:41:24 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 static void	check_state(t_philo *philo)
 {
 	if (get_status(philo) == THINK)
-		if (philo->p_ms >= philo->time_to_die)
+		if (get_ms_passed_philo(*philo) >= philo->time_to_die)
 		{
-			printf("%d %d died\n", get_ms(philo), philo->philo_num);
+			printf("%d %d died\n", get_ms_passed_global(philo),
+		  		philo->philo_num);
 			set_status(philo, 1);
 		}
 }
