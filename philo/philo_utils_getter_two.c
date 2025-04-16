@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 22:46:25 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:24:10 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:27:27 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,3 @@ enum e_action	get_action(t_philo *philo)
 	return (action);
 }
 
-unsigned int	get_philo_ms(t_philo *philo)
-{
-	unsigned int	ms;
-
-	pthread_mutex_lock(&philo->p_ms.lock);
-	ms = philo->p_ms.ms;
-	pthread_mutex_unlock(&philo->p_ms.lock);
-	return (ms);
-}

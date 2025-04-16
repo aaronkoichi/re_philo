@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:38:23 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:47:23 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	t_fork			fork;
 	t_action		action;
+	pthread_mutex_t	*ms_lock;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
@@ -93,6 +94,7 @@ typedef struct s_data
 	bool			meals;
 	t_philo			*philos;
 	pthread_t		monitor_thread;
+	pthread_mutex_t	ms_lock;
 	t_dead			status;
 	unsigned int	philo_count;
 	unsigned int	total_food;
@@ -104,7 +106,7 @@ typedef struct s_data
 /*philo_utils.c*/
 unsigned int	ft_atoi(const char *nptr);
 void			ft_usleep(unsigned int sleep, unsigned int *ms);
-unsigned int	get_current_ms(void);
+unsigned int	get_current_ms(pthread_mutex_t	*lock);
 /*philo_utils_two.c*/
 int				check_args(int argc, char **argv);
 int				data_init(t_data *data, int ac, char **av);

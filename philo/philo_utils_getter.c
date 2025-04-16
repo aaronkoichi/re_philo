@@ -6,21 +6,11 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:25:39 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:37:26 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:27:31 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-unsigned int	get_global_ms(t_philo *philo)
-{
-	unsigned int	ms;
-
-	pthread_mutex_lock(&philo->g_ms->lock);
-	ms = philo->g_ms->ms;
-	pthread_mutex_unlock(&philo->g_ms->lock);
-	return (ms);
-}
 
 int	get_status(t_philo *philo)
 {

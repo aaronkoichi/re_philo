@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:29:35 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 15:38:36 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:49:03 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,32 @@ unsigned int	get_ms_passed_philo(t_philo phi)
 {
 	unsigned int	ms;
 
-	ms = get_current_ms() - get_philo_ms(&phi);
+	ms = get_current_ms(phi.ms_lock) - get_philo_ms(&phi);
 	return (ms);
 }
 
 unsigned int	get_ms_passed_global(t_philo *philo)
 {
-	return (get_current_ms() - get_global_ms(philo));
+	return (get_current_ms(philo->ms_lock) - get_global_ms(philo));
 }
+
+unsigned int	get_philo_ms(t_philo *philo)
+{
+	unsigned int	ms;
+
+	pthread_mutex_lock(&philo->p_ms.lock);
+	ms = philo->p_ms.ms;
+	pthread_mutex_unlock(&philo->p_ms.lock);
+	return (ms);
+}
+
+unsigned int	get_global_ms(t_philo *philo)
+{
+	unsigned int	ms;
+
+	pthread_mutex_lock(&philo->g_ms->lock);
+	ms = philo->g_ms->ms;
+	pthread_mutex_unlock(&philo->g_ms->lock);
+	return (ms);
+}
+

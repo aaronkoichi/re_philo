@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philio_set_forks.c                                 :+:      :+:    :+:   */
+/*   philo_set_forks.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:13:25 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/09 15:03:00 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:27:03 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	set_forks(pthread_mutex_t *f1, pthread_mutex_t *f2)
 	err = pthread_mutex_init(&temp, NULL);
 	if (err != 0)
 		return ;
-	f1 = &temp;
-	f2 = &temp;
+	*f1 = temp;
+	*f2 = temp;
 }
 
 void	set_all_forks(t_data *data)

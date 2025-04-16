@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 14:56:55 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:48:06 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	philo_init(t_data *data, char **av)
 	i = 0;
 	while (i < data->philo_count)
 	{
-		data->philos[i].philo_num = i;
+		data->philos[i].philo_num = i + 1;
 		data->philos[i].status = &(data->status);
 		set_action(&data->philos[i], THINK);
 		data->philos[i].time_to_die = ft_atoi(av[2]);
@@ -45,6 +45,7 @@ static void	philo_init(t_data *data, char **av)
 		data->philos[i].time_to_sleep = ft_atoi(av[4]);
 		data->philos[i].food_count.count = 0;
 		data->philos[i].g_ms = &data->ms;
+		data->philos[i].ms_lock = &data->ms_lock;
 		pthread_mutex_init(&data->philos[i].food_count.lock, NULL);
 		i++;
 	}
@@ -53,7 +54,8 @@ static void	philo_init(t_data *data, char **av)
 int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
-	data->ms.ms = get_current_ms();
+	pthread_mutex_init(&data->ms_lock, NULL);
+	data->ms.ms = get_current_ms(&data->ms_lock);
 	pthread_mutex_init(&data->ms.lock, NULL);
 	data->status.dead_int = 0;
 	pthread_mutex_init(&data->status.lock, NULL);
