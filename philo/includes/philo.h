@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 21:46:51 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/17 20:27:41 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_data
 {
 	bool			meals;
 	t_philo			*philos;
+	pthread_mutex_t	*all_forks;
 	pthread_t		monitor_thread;
 	pthread_mutex_t	ms_lock;
 	t_dead			status;

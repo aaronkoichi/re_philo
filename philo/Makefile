@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/16 21:50:55 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/17 20:22:35 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = philo_utils.c \
 	   philo_set_forks.c \
 	   philo_simulation.c \
 	   philo_threads.c \
-	   philo_utils_two.c \
+	   philo_init.c \
 	   philo_main.c \
 	   philo_utils_getter.c \
 	   philo_utils_getter_ms.c \
