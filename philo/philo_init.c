@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 20:56:09 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 21:38:57 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	philo_init(t_data *data, char **av)
 	{
 		data->philos[i].philo_num = i + 1;
 		pthread_mutex_init(&data->philos[i].action.lock, NULL);
+		pthread_mutex_init(&data->philos[i].p_ms.lock, NULL);
 		set_action(&data->philos[i], THINK);
 		data->philos[i].time_to_die = ft_atoi(av[2]);
 		data->philos[i].time_to_eat = ft_atoi(av[3]);
