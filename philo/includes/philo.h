@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/17 20:27:41 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 16:42:33 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_philo
 	t_fork			fork;
 	t_action		action;
 	pthread_mutex_t	*ms_lock;
+	pthread_mutex_t	*printf_lock;
 	unsigned int	time_to_die;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;

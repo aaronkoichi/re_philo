@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/17 20:29:38 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 16:45:51 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int check_args(int argc, char **argv)
 static void	philo_init(t_data *data, char **av)
 {
 	unsigned int	i;
+	pthread_mutex_t	*temp;
 
 	i = 0;
+	temp = malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(&temp[0], NULL);
 	while (i < data->philo_count)
 	{
 		data->philos[i].philo_num = i + 1;
@@ -46,6 +49,7 @@ static void	philo_init(t_data *data, char **av)
 		data->philos[i].food_count.count = 0;
 		data->philos[i].g_ms = &data->ms;
 		data->philos[i].ms_lock = &data->ms_lock;
+		data->philos[i].printf_lock = &temp[0];
 		pthread_mutex_init(&data->philos[i].food_count.lock, NULL);
 		i++;
 	}

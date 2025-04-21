@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:25:39 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/16 16:27:31 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 16:17:56 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	get_data_status(t_data *data)
 {
 	int	status;
 
+	status = 0;
 	pthread_mutex_lock(&data->status.lock);
 	status = data->status.dead_int;
 	pthread_mutex_unlock(&data->status.lock);

@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/04/17 20:22:35 by zlee             ###   ########.fr        #
+#    Updated: 2025/04/21 16:15:34 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = philo
 
 CC = cc
 
-CFLAGS =  -g -pthread
+CFLAGS =  -g3 -pthread
 
 MEM_CHECK = -fsanitize=undefined -fsanitize=address
 
