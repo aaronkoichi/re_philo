@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 16:22:47 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 20:50:34 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	create_thread(t_data *data)
 			return ((unsigned int)i);
 		i++;
 	}
-	pthread_create(&data->monitor_thread, NULL, monitor, &data);
+	pthread_create(&data->monitor_thread, NULL, monitor, data);
 	while (--i >= 0)
 		pthread_join(data->philos[i].thread, NULL);
 	pthread_join(data->monitor_thread, NULL);

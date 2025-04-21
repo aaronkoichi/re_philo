@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 16:49:04 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 17:27:19 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*monitor(void *args)
 	int					status;
 	
 	data = (t_data *)args;
-	// status = get_data_status(data);
+	status = get_data_status(data);
 	// while (status != 1)
 	// {
 	// 	count = 0;

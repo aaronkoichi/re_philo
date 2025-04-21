@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:25:39 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 16:17:56 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 20:42:23 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	get_status(t_philo *philo)
 {
 	int	status;
 
-	pthread_mutex_lock(&philo->status->lock);
-	status = philo->status->dead_int;
-	pthread_mutex_unlock(&philo->status->lock);
+	usleep(10);
+	status = 0;
+	pthread_mutex_lock(philo->dead_lock);
+	status = *philo->dead_int;
+	pthread_mutex_unlock(philo->dead_lock);
 	return (status);
 }
 
@@ -37,9 +39,10 @@ int	get_data_status(t_data *data)
 	int	status;
 
 	status = 0;
-	pthread_mutex_lock(&data->status.lock);
-	status = data->status.dead_int;
-	pthread_mutex_unlock(&data->status.lock);
+	usleep(10);
+	pthread_mutex_lock(data->dead_lock);
+	status = data->dead_int;
+	pthread_mutex_unlock(data->dead_lock);
 	return (status);
 }
 

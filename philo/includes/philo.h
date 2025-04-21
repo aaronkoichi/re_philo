@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 16:42:33 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/21 17:07:40 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ typedef struct	s_food
 }	t_food;
 
 /*Struct to mark the status of dead*/
-typedef struct s_dead
-{
-	int				dead_int;
-	pthread_mutex_t	lock;
-}	t_dead;
+// typedef struct s_dead
+// {
+// 	int				dead_int;
+// 	pthread_mutex_t	lock;
+// }	t_dead;
 
 /*Struct to mark the miliseconds that has passed.*/
 typedef struct s_ms
@@ -84,7 +84,8 @@ typedef struct s_philo
 	unsigned int	time_to_eat;
 	unsigned int	time_to_sleep;
 	t_food			food_count;
-	t_dead			*status;
+	int				*dead_int;
+	pthread_mutex_t	*dead_lock;
 	t_ms			p_ms;
 	t_ms			*g_ms;
 }	t_philo;
@@ -97,7 +98,8 @@ typedef struct s_data
 	pthread_mutex_t	*all_forks;
 	pthread_t		monitor_thread;
 	pthread_mutex_t	ms_lock;
-	t_dead			status;
+	int				dead_int;
+	pthread_mutex_t	*dead_lock;
 	unsigned int	philo_count;
 	unsigned int	total_food;
 	t_ms			ms;
