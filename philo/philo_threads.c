@@ -6,16 +6,33 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 17:29:24 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 21:43:57 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*Creates the thread, parse it onto the above function.
+/* WILL CHANGE THIS COMMENT LATER.
+ * Creates the thread, parse it onto the above function.
  * Not a convention way, but returning -1 to make sure everything is ok
  * Other than that it s*/
-int	create_thread(t_data *data)
+
+int	single_thread_create(t_data *data)
+{
+	int	checker;
+
+	checker = 0;
+	checker = pthread_create(&data->philos[0].thread, NULL,
+			lonely_simulation, &(data->philos[0]));
+	if (checker != 0)
+		return (1);
+	pthread_create(&data->monitor_thread, NULL, monitor, data);
+	pthread_join(data->monitor_thread, NULL);
+	pthread_join(data->philos[0].thread, NULL);
+	return (0);
+}
+
+int	multi_thread_create(t_data *data)
 {
 	unsigned int	i;
 	int				checker;

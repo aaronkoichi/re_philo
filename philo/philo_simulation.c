@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 16:39:06 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 21:09:08 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ static void	p_think_eat(t_philo *phi)
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
-		set_action(phi, THINK);
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d is thinking\n", get_ms_passed_global(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
+		usleep(42);
+		set_action(phi, THINK);
 		p_pickup_fork(phi);
 		set_action(phi, EAT);
 		pthread_mutex_lock(phi->printf_lock);

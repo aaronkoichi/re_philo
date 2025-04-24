@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 17:09:26 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 22:07:06 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,29 @@ static int	check_meals(t_data *data)
 	return (1);
 }
 
+
+void	check_all_state(t_data *data)
+{
+	unsigned int	count;
+
+	count = 0;
+	while (count < data->philo_count)
+	{
+		check_state(&data->philos[count]);
+		count++;
+		if (get_data_status(data) == 1)
+			break;
+	}
+	if (get_data_status(data) == 1)
+	{
+		count = 0;
+		while (count < data->philo_count)
+			pthread_detach(data->philos[count++].thread);
+	}
+}
+
+
+
 /*Monitor if the user died of starvation, or if all of them has completed
  * their number of meals.*/
 void	*monitor(void *args)
@@ -58,8 +81,9 @@ void	*monitor(void *args)
 	while (status != 1)
 	{
 		count = 0;
-		while (count < data->philo_count)
-			check_state(&data->philos[count++]);
+		check_all_state(data);
+		if (get_data_status(data) == 1)
+			break ;
 		if (data->meals == true)
 			if (check_meals(data))
 				set_data_status(data, 1);

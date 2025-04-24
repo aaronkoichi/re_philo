@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 17:10:12 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 21:40:24 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ void			set_all_forks(t_data *data);
 void			*simulation(void *args);
 void			*monitor(void *args);
 /*philo_threads.c*/
-int				create_thread(t_data *data);
+int				single_thread_create(t_data *data);
+int				multi_thread_create(t_data *data);
 /*philo_utils_getter.c*/
 int				get_status(t_philo *philo);
 unsigned int	get_food_count(t_philo *philo);
@@ -138,4 +139,6 @@ unsigned int	get_global_ms(t_philo *philo);
 unsigned int	get_philo_ms(t_philo *philo);
 unsigned int	get_ms_passed_global(t_philo *philo);
 unsigned int	get_ms_passed_philo(t_philo phi);
+/*philo_simulation_lonely_edition.c*/
+void	*lonely_simulation(void *args);
 #endif

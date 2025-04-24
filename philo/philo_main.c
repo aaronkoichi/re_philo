@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:53:24 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/10 16:08:29 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 21:44:33 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	main(int argc, char **argv)
 	if (!data_init(&data, argc, argv))
 		return (0);
 	set_all_forks(&data);
-	create_thread(&data);
+	if (data.philo_count > 1)
+		multi_thread_create(&data);
+	else
+		single_thread_create(&data);
 	free(data.philos);
 	return (0);
 }
