@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 21:38:57 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 16:22:08 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ int	data_init(t_data *data, int ac, char **av)
 	data->philo_count = ft_atoi(av[1]);
 	pthread_mutex_init(&data->ms_lock, NULL);
 	data->ms.ms = get_current_ms(&data->ms_lock);
-	pthread_mutex_init(&data->ms.lock, NULL);
 	data->dead_int = 0;
 	data->philos = (t_philo *)malloc(data->philo_count * sizeof(t_philo));
 	if (!data->philos)
 		return (0);
 	philo_init(data, av);
+	// debug
 	if (ac == 6)
 	{
 		data->total_food = ft_atoi(av[5]);
