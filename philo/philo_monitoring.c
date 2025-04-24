@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 15:59:46 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 17:09:26 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 static void	check_state(t_philo *philo)
 {
 	unsigned int	num;
+	enum e_action	action;
 
 	num = get_ms_passed_philo(*philo);
-	if (get_status(philo) == THINK)
+	action = get_action(philo);
+	if (action == THINK || action == SLEEP)
 	{
 		if (num >= philo->time_to_die)
 		{

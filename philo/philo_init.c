@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 16:22:08 by zlee             ###   ########.fr       */
+/*   Updated: 2025/04/24 17:28:14 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	data_init(t_data *data, int ac, char **av)
 	if (!data->philos)
 		return (0);
 	philo_init(data, av);
-	// debug
 	if (ac == 6)
 	{
 		data->total_food = ft_atoi(av[5]);
