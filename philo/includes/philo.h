@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:15:40 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 18:40:57 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void			set_action(t_philo *philo, enum e_action act);
 unsigned int	get_global_ms(t_philo *philo);
 unsigned int	get_philo_ms(t_philo *philo);
 unsigned int	get_ms_psd_gbl(t_philo *philo);
-unsigned int	get_ms_passed_philo(t_philo phi);
+unsigned int	get_ms_passed_philo(t_philo *phi);
 /*philo_simulation_lonely_edition.c*/
 void			*lonely_simulation(void *args);
 /* philo_free.c */

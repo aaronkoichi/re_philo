@@ -6,19 +6,19 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:29:35 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:00:28 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 18:40:36 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-unsigned int	get_ms_passed_philo(t_philo phi)
+unsigned int	get_ms_passed_philo(t_philo *phi)
 {
 	unsigned int	current_ms;
 	unsigned int	philo_ms;
 
-	current_ms = get_current_ms(phi.ms_lock);
-	philo_ms = get_philo_ms(&phi);
+	current_ms = get_current_ms(phi->ms_lock);
+	philo_ms = get_philo_ms(phi);
 	if (philo_ms == 0)
 		return (0);
 	else

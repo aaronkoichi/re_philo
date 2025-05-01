@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:16:33 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 18:41:06 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	check_state(t_philo *philo)
 	unsigned int	num;
 	enum e_action	action;
 
-	num = get_ms_passed_philo(*philo);
+	num = get_ms_passed_philo(philo);
 	action = get_action(philo);
 	if (action == THINK || action == SLEEP)
 	{
@@ -52,17 +52,18 @@ void	check_all_state(t_data *data)
 	count = 0;
 	while (count < data->philo_count)
 	{
+		usleep(1);
 		check_state(&data->philos[count]);
 		count++;
 		if (get_data_status(data) == 1)
 			break ;
 	}
-	if (get_data_status(data) == 1)
-	{
-		count = 0;
-		while (count < data->philo_count)
-			pthread_detach(data->philos[count++].thread);
-	}
+	// if (get_data_status(data) == 1)
+	// {
+	// 	count = 0;
+	// 	while (count < data->philo_count)
+	// 		pthread_detach(data->philos[count++].thread);
+	// }
 }
 
 /*Monitor if the user died of starvation, or if all of them has completed

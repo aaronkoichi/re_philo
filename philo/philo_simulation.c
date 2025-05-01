@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:16:07 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 19:54:57 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,32 @@ static void	p_pickup_fork(t_philo *phi)
 {
 	if (!(phi->philo_num % 2))
 	{
+		// put them into a seperate function later.
 		pthread_mutex_lock(phi->fork.left);
+		if (get_status(phi) == 1)
+			return ;
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		pthread_mutex_lock(phi->fork.right);
+		if (get_status(phi) == 1)
+			return ;
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 	}
 	else
 	{
+		// put them into a seperate function later.
 		pthread_mutex_lock(phi->fork.right);
+		if (get_status(phi) == 1)
+			return ;
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		pthread_mutex_lock(phi->fork.left);
+		if (get_status(phi) == 1)
+			return ;
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
@@ -67,6 +77,8 @@ static void	p_think_eat(t_philo *phi)
 		pthread_mutex_unlock(phi->printf_lock);
 		set_action(phi, THINK);
 		p_pickup_fork(phi);
+		if (get_status(phi) == 1)
+			return ;
 		set_action(phi, EAT);
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d is eating\n", get_ms_psd_gbl(phi), phi->philo_num);
@@ -82,11 +94,11 @@ static void	p_sleep(t_philo *phi)
 {
 	int	dead_check;
 
-	pthread_mutex_unlock(phi->fork.left);
-	pthread_mutex_unlock(phi->fork.right);
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
+		pthread_mutex_unlock(phi->fork.left);
+		pthread_mutex_unlock(phi->fork.right);
 		set_action(phi, SLEEP);
 		pthread_mutex_lock(phi->printf_lock);
 		printf("%d %d is sleeping\n", get_ms_psd_gbl(phi), phi->philo_num);
@@ -113,5 +125,7 @@ void	*simulation(void *args)
 		p_doom_sleep(philo);
 		dead_check = get_status(philo);
 	}
+	pthread_mutex_unlock(philo->fork.left);
+	pthread_mutex_unlock(philo->fork.right);
 	return (NULL);
 }
