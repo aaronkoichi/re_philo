@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 19:54:57 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 19:57:17 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	p_pickup_fork(t_philo *phi)
 	}
 	else
 	{
+		usleep(20);
 		// put them into a seperate function later.
 		pthread_mutex_lock(phi->fork.right);
 		if (get_status(phi) == 1)
