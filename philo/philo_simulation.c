@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 15:58:56 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:16:07 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	p_think_eat(t_philo *phi)
 		printf("%d %d is eating\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		usleep(phi->time_to_eat * 1000);
-		set_food_count(phi, get_food_count(phi));
+		set_food_count(phi);
 		set_philo_ms(phi, get_current_ms(phi->ms_lock));
 	}
 }

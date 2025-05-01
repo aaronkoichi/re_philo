@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:02:01 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:15:40 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ enum e_action	get_action(t_philo *philo);
 /*philo_utils_setter.c*/
 void			set_philo_ms(t_philo *philo, unsigned int ms);
 void			set_status(t_philo *philo, int num);
-void			set_food_count(t_philo *philo, int num);
+void			set_food_count(t_philo *philo);
 void			set_data_status(t_data *data, int num);
 void			set_action(t_philo *philo, enum e_action act);
 /*philo_utils_getter_ms.c*/

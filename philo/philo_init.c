@@ -6,12 +6,11 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 15:50:58 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:15:47 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
 
 void	init_dead(t_data *data)
 {

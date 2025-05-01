@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:51:00 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 16:00:53 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:15:26 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	set_status(t_philo *philo, int num)
 	pthread_mutex_unlock(philo->dead_lock);
 }
 
-void	set_food_count(t_philo *philo, int num)
+void	set_food_count(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->food_count.lock);
-	philo->food_count.count = num;
+	philo->food_count.count++;
 	pthread_mutex_unlock(&philo->food_count.lock);
 }
 
