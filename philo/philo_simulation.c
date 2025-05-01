@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 20:17:20 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 21:05:19 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	p_pickup_fork(t_philo *phi)
 	}
 	else
 	{
-		usleep(21);
+		usleep(60);
 		pickup_right_fork(phi);
 		pickup_left_fork(phi);
 	}
@@ -51,20 +51,18 @@ static void	p_think_eat(t_philo *phi)
 	dead_check = get_status(phi);
 	if (dead_check != 1)
 	{
-		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is thinking\n", get_ms_psd_gbl(phi), phi->philo_num);
-		pthread_mutex_unlock(phi->printf_lock);
+		ft_print(phi, THINK);
 		set_action(phi, THINK);
 		p_pickup_fork(phi);
 		if (get_status(phi) == 1)
 			return ;
 		set_action(phi, EAT);
-		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is eating\n", get_ms_psd_gbl(phi), phi->philo_num);
-		pthread_mutex_unlock(phi->printf_lock);
+		set_philo_ms(phi, get_current_ms(phi->ms_lock));
+		if (get_status(phi) == 1)
+			return ;
+		ft_print(phi, EAT);
 		usleep(phi->time_to_eat * 1000);
 		set_food_count(phi);
-		set_philo_ms(phi, get_current_ms(phi->ms_lock));
 	}
 }
 
@@ -79,9 +77,9 @@ static void	p_sleep(t_philo *phi)
 		pthread_mutex_unlock(phi->fork.left);
 		pthread_mutex_unlock(phi->fork.right);
 		set_action(phi, SLEEP);
-		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is sleeping\n", get_ms_psd_gbl(phi), phi->philo_num);
-		pthread_mutex_unlock(phi->printf_lock);
+		if (get_status(phi) == 1)
+			return ;
+		ft_print(phi, SLEEP);
 		usleep(phi->time_to_sleep * 1000);
 	}
 }
@@ -96,6 +94,7 @@ void	*simulation(void *args)
 
 	philo = (t_philo *)args;
 	dead_check = get_status(philo);
+	usleep(philo->philo_num);
 	set_philo_ms(philo, get_current_ms(philo->ms_lock));
 	while (dead_check != 1)
 	{
@@ -104,7 +103,10 @@ void	*simulation(void *args)
 		p_doom_sleep(philo);
 		dead_check = get_status(philo);
 	}
-	pthread_mutex_unlock(philo->fork.left);
-	pthread_mutex_unlock(philo->fork.right);
+	if (get_action(philo) == THINK || get_action(philo) == EAT)
+	{
+		pthread_mutex_unlock(philo->fork.left);
+		pthread_mutex_unlock(philo->fork.right);
+	}
 	return (NULL);
 }

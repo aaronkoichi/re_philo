@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 20:18:01 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 20:53:59 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void	check_state(t_philo *philo)
 			pthread_mutex_lock(philo->printf_lock);
 			printf("%d %d died\n", get_ms_psd_gbl(philo),
 				philo->philo_num);
-			pthread_mutex_unlock(philo->printf_lock);
 			set_status(philo, 1);
+			pthread_mutex_unlock(philo->printf_lock);
 		}
 	}
 }

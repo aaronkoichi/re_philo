@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 20:16:46 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 21:02:37 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ enum e_action
 {
 	THINK,
 	EAT,
-	SLEEP
+	SLEEP,
+	TAKE
 };
 
 /*Struct for ready status
@@ -147,4 +148,6 @@ void			free_data(t_data *data);
 /* philo_simulation_pickup_forks.c */
 void			pickup_left_fork(t_philo *phi);
 void			pickup_right_fork(t_philo *phi);
+/* philo_print.c */
+void			ft_print(t_philo *phi, enum e_action act);
 #endif

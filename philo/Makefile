@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/05/01 18:29:50 by zlee             ###   ########.fr        #
+#    Updated: 2025/05/01 21:05:53 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,10 @@ SRCS = philo_utils.c \
 	   philo_utils_getter_ms.c \
 	   philo_utils_getter_two.c \
 	   philo_simulation_lonely_edition.c \
+	   philo_simulation_pickup_forks.c \
 	   philo_utils_setter.c \
 	   philo_free.c \
+	   philo_print.c \
 
 OBJS = $(SRCS:.c=.o)
 
