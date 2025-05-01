@@ -6,12 +6,11 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:51:00 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/21 17:13:39 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:00:53 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <unistd.h>
 
 void	set_status(t_philo *philo, int num)
 {

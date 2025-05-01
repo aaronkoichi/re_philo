@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 17:28:14 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 15:50:58 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_dead(t_data *data)
 	}
 }
 
-int check_args(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	if (ft_atoi(argv[1]) && ft_atoi(argv[2]) && ft_atoi(argv[3])
 		&& ft_atoi(argv[4]))

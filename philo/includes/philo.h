@@ -6,13 +6,13 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 21:40:24 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 16:02:01 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-#include <stdint.h>
+# include <stdint.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -29,7 +29,8 @@ typedef struct s_fork
 }	t_fork;
 
 /*Enum for actions*/
-enum e_action{
+enum e_action
+{
 	THINK,
 	EAT,
 	SLEEP
@@ -45,7 +46,7 @@ typedef struct s_ready
 }	t_ready;
 
 /*Struct for food*/
-typedef struct	s_food
+typedef struct s_food
 {
 	unsigned int	count;
 	pthread_mutex_t	lock;
@@ -137,8 +138,10 @@ void			set_action(t_philo *philo, enum e_action act);
 /*philo_utils_getter_ms.c*/
 unsigned int	get_global_ms(t_philo *philo);
 unsigned int	get_philo_ms(t_philo *philo);
-unsigned int	get_ms_passed_global(t_philo *philo);
+unsigned int	get_ms_psd_gbl(t_philo *philo);
 unsigned int	get_ms_passed_philo(t_philo phi);
 /*philo_simulation_lonely_edition.c*/
-void	*lonely_simulation(void *args);
+void			*lonely_simulation(void *args);
+/* philo_free.c */
+void			free_data(t_data *data);
 #endif

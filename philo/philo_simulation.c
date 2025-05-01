@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 21:09:08 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 15:58:56 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*After they done sleeping, let them sleep again for a bit.
  * No Need to announce*/
-static void p_doom_sleep(t_philo *phi)
+static void	p_doom_sleep(t_philo *phi)
 {
 	int	dead_check;
 
@@ -23,7 +23,7 @@ static void p_doom_sleep(t_philo *phi)
 	{
 		set_action(phi, THINK);
 		set_action(phi, SLEEP);
-		usleep(42);
+		usleep(60);
 	}
 }
 
@@ -34,22 +34,22 @@ static void	p_pickup_fork(t_philo *phi)
 	{
 		pthread_mutex_lock(phi->fork.left);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		pthread_mutex_lock(phi->fork.right);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 	}
 	else
 	{
 		pthread_mutex_lock(phi->fork.right);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		pthread_mutex_lock(phi->fork.left);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d has taken a fork\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 	}
 }
@@ -63,14 +63,13 @@ static void	p_think_eat(t_philo *phi)
 	if (dead_check != 1)
 	{
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is thinking\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d is thinking\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
-		usleep(42);
 		set_action(phi, THINK);
 		p_pickup_fork(phi);
 		set_action(phi, EAT);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is eating\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d is eating\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		usleep(phi->time_to_eat * 1000);
 		set_food_count(phi, get_food_count(phi));
@@ -90,7 +89,7 @@ static void	p_sleep(t_philo *phi)
 	{
 		set_action(phi, SLEEP);
 		pthread_mutex_lock(phi->printf_lock);
-		printf("%d %d is sleeping\n", get_ms_passed_global(phi), phi->philo_num);
+		printf("%d %d is sleeping\n", get_ms_psd_gbl(phi), phi->philo_num);
 		pthread_mutex_unlock(phi->printf_lock);
 		usleep(phi->time_to_sleep * 1000);
 	}
@@ -116,4 +115,3 @@ void	*simulation(void *args)
 	}
 	return (NULL);
 }
-

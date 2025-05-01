@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 20:57:25 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 15:59:42 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ unsigned int	ft_atoi(const char *nptr)
 		total = (total * 10) + (nptr[index++] - 48);
 	return (total * multiple);
 }
-

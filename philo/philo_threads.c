@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 21:43:57 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 15:59:26 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	multi_thread_create(t_data *data)
 	checker = 0;
 	while (i < data->philo_count)
 	{
-		checker = pthread_create(&data->philos[i].thread, NULL, 
+		checker = pthread_create(&data->philos[i].thread, NULL,
 				simulation, &(data->philos[i]));
 		if (checker != 0)
 			return ((unsigned int)i);

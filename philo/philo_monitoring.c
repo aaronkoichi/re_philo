@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 22:07:06 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 15:57:36 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	check_state(t_philo *philo)
 		if (num >= philo->time_to_die)
 		{
 			pthread_mutex_lock(philo->printf_lock);
-			printf("%d %d died\n", get_ms_passed_global(philo),
-		  		philo->philo_num);
+			printf("%d %d died\n", get_ms_psd_gbl(philo),
+				philo->philo_num);
 			pthread_mutex_unlock(philo->printf_lock);
 			set_status(philo, 1);
 		}
@@ -45,7 +45,6 @@ static int	check_meals(t_data *data)
 	return (1);
 }
 
-
 void	check_all_state(t_data *data)
 {
 	unsigned int	count;
@@ -56,7 +55,7 @@ void	check_all_state(t_data *data)
 		check_state(&data->philos[count]);
 		count++;
 		if (get_data_status(data) == 1)
-			break;
+			break ;
 	}
 	if (get_data_status(data) == 1)
 	{
@@ -66,8 +65,6 @@ void	check_all_state(t_data *data)
 	}
 }
 
-
-
 /*Monitor if the user died of starvation, or if all of them has completed
  * their number of meals.*/
 void	*monitor(void *args)
@@ -75,7 +72,7 @@ void	*monitor(void *args)
 	t_data				*data;
 	unsigned int		count;
 	int					status;
-	
+
 	data = (t_data *)args;
 	status = get_data_status(data);
 	while (status != 1)
@@ -91,4 +88,3 @@ void	*monitor(void *args)
 	}
 	return (NULL);
 }
-
