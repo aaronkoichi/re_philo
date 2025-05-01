@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 20:53:59 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 22:21:28 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	check_all_state(t_data *data)
 	count = 0;
 	while (count < data->philo_count)
 	{
-		usleep(1);
 		check_state(&data->philos[count]);
 		count++;
 		if (get_data_status(data) == 1)

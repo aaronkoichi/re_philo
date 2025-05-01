@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 21:05:19 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 22:22:48 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,20 @@ static void	p_doom_sleep(t_philo *phi)
 	{
 		set_action(phi, THINK);
 		set_action(phi, SLEEP);
-		usleep(60);
+		usleep(500);
 	}
 }
 
 /*Order of them to pick up their fork.*/
 static void	p_pickup_fork(t_philo *phi)
 {
-	if (!(phi->philo_num % 2))
+	if (phi->philo_num % 2 == 0)
 	{
 		pickup_left_fork(phi);
 		pickup_right_fork(phi);
 	}
 	else
 	{
-		usleep(60);
 		pickup_right_fork(phi);
 		pickup_left_fork(phi);
 	}
@@ -93,8 +92,10 @@ void	*simulation(void *args)
 	int			dead_check;
 
 	philo = (t_philo *)args;
+	philo->p_ms.ms = 0;
 	dead_check = get_status(philo);
-	usleep(philo->philo_num);
+	if (philo->philo_num % 2 == 0)
+		usleep(500);
 	set_philo_ms(philo, get_current_ms(philo->ms_lock));
 	while (dead_check != 1)
 	{
