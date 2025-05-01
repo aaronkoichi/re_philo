@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 18:41:06 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 20:18:01 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,6 @@ void	check_all_state(t_data *data)
 		if (get_data_status(data) == 1)
 			break ;
 	}
-	// if (get_data_status(data) == 1)
-	// {
-	// 	count = 0;
-	// 	while (count < data->philo_count)
-	// 		pthread_detach(data->philos[count++].thread);
-	// }
 }
 
 /*Monitor if the user died of starvation, or if all of them has completed

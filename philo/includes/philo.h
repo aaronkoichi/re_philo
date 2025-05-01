@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 18:40:57 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/01 20:16:46 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,7 @@ unsigned int	get_ms_passed_philo(t_philo *phi);
 void			*lonely_simulation(void *args);
 /* philo_free.c */
 void			free_data(t_data *data);
+/* philo_simulation_pickup_forks.c */
+void			pickup_left_fork(t_philo *phi);
+void			pickup_right_fork(t_philo *phi);
 #endif
