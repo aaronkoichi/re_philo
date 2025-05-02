@@ -6,16 +6,11 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 21:23:43 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/02 15:18:47 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-/* WILL CHANGE THIS COMMENT LATER.
- * Creates the thread, parse it onto the above function.
- * Not a convention way, but returning -1 to make sure everything is ok
- * Other than that it s*/
 
 int	single_thread_create(t_data *data)
 {
