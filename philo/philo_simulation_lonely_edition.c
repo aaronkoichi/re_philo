@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 21:23:03 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 15:58:27 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/05 19:50:19 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	*lonely_simulation(void *args)
 	pthread_mutex_lock(phi->printf_lock);
 	printf("%d %d has taken a fork\n", get_ms_psd_gbl(phi), phi->philo_num);
 	pthread_mutex_unlock(phi->printf_lock);
+	pthread_mutex_unlock(phi->fork.left);
 	return (NULL);
 }

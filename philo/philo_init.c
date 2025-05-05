@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/05 15:49:45 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/05 19:46:47 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	philo_init(t_data *data, char **av)
 	pthread_mutex_init(&temp[0], NULL);
 	while (i < data->philo_count)
 	{
+		memset(&data->philos[i], 0, sizeof(t_philo));
 		data->philos[i].philo_num = i + 1;
 		pthread_mutex_init(&data->philos[i].action.lock, NULL);
 		pthread_mutex_init(&data->philos[i].p_ms.lock, NULL);
