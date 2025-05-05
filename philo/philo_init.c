@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/02 16:25:39 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/05 15:49:45 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ static void	philo_init(t_data *data, char **av)
 int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
-	if (data->philo_count > 200)
-		return (0);
 	pthread_mutex_init(&data->ms_lock, NULL);
 	data->ms.ms = get_current_ms(&data->ms_lock);
 	data->dead_int = 0;
