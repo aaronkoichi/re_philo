@@ -6,7 +6,7 @@
 #    By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 15:41:01 by zlee              #+#    #+#              #
-#    Updated: 2025/05/05 19:53:01 by zlee             ###   ########.fr        #
+#    Updated: 2025/05/05 20:41:52 by zlee             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS =  -pthread -g3
 
-MEM_CHECK = -fsanitize=undefined -fsanitize=thread
+# MEM_CHECK = -fsanitize=undefined -fsanitize=thread
 
 INCLUDES = -Iincludes
 
