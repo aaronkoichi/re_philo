@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/02 15:18:47 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/06 17:08:01 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	single_thread_create(t_data *data)
 			lonely_simulation, &(data->philos[0]));
 	if (checker != 0)
 		return (1);
-	pthread_create(&data->monitor_thread, NULL, monitor, data);
+	checker = pthread_create(&data->monitor_thread, NULL, monitor, data);
+	if (checker != 0)
+		return (checker);
 	pthread_join(data->monitor_thread, NULL);
 	pthread_join(data->philos[0].thread, NULL);
 	return (0);
@@ -40,12 +42,14 @@ int	multi_thread_create(t_data *data)
 		checker = pthread_create(&data->philos[i].thread, NULL,
 				simulation, &(data->philos[i]));
 		if (checker != 0)
-			return ((unsigned int)i);
+			return (checker);
 		i++;
 	}
-	pthread_create(&data->monitor_thread, NULL, monitor, data);
-	i = -1;
+	checker = pthread_create(&data->monitor_thread, NULL, monitor, data);
+	if (checker != 0)
+		return (checker);
 	pthread_join(data->monitor_thread, NULL);
+	i = -1;
 	while (++i < data->philo_count)
 		pthread_join(data->philos[i].thread, NULL);
 	return (0);
