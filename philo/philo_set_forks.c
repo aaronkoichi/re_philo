@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 19:13:25 by zlee              #+#    #+#             */
-/*   Updated: 2025/04/24 21:45:15 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/06 23:52:54 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	set_all_forks(t_data *data)
 	while (i < data->philo_count - 1)
 	{
 		pthread_mutex_init(&data->all_forks[i], NULL);
-		data->philos[i].fork.right = &data->all_forks[i];
-		data->philos[i + 1].fork.left = &data->all_forks[i];
+		data->philos[i].fork.left = &data->all_forks[i];
+		data->philos[i + 1].fork.right = &data->all_forks[i];
 		i++;
 	}
 	pthread_mutex_init(&data->all_forks[i], NULL);
-	data->philos[i].fork.right = &data->all_forks[i];
-	data->philos[0].fork.left = &data->all_forks[i];
+	data->philos[i].fork.left = &data->all_forks[i];
+	data->philos[0].fork.right = &data->all_forks[i];
 }

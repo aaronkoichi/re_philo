@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 22:21:28 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 00:09:54 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,12 @@ void	check_all_state(t_data *data)
 void	*monitor(void *args)
 {
 	t_data				*data;
-	unsigned int		count;
 	int					status;
 
 	data = (t_data *)args;
 	status = get_data_status(data);
 	while (status != 1)
 	{
-		count = 0;
 		check_all_state(data);
 		if (get_data_status(data) == 1)
 			break ;

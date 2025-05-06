@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 21:02:37 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 00:47:36 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,12 @@ enum e_action
 	TAKE
 };
 
-/*Struct for ready status
- * --> To check if all threads are ready (so to start the
- *  action concurrently.)*/
-typedef struct s_ready
-{
-	bool			status;
-	pthread_mutex_t	lock;
-}	t_ready;
-
 /*Struct for food*/
 typedef struct s_food
 {
 	unsigned int	count;
 	pthread_mutex_t	lock;
 }	t_food;
-
-/*Struct to mark the status of dead*/
-// typedef struct s_dead
-// {
-// 	int				dead_int;
-// 	pthread_mutex_t	lock;
-// }	t_dead;
 
 /*Struct to mark the miliseconds that has passed.*/
 typedef struct s_ms
@@ -99,7 +83,6 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_mutex_t	*all_forks;
 	pthread_t		monitor_thread;
-	pthread_mutex_t	ms_lock;
 	int				dead_int;
 	pthread_mutex_t	*dead_lock;
 	unsigned int	philo_count;
@@ -113,7 +96,7 @@ typedef struct s_data
 unsigned int	ft_atoi(const char *nptr);
 void			ft_usleep(unsigned int sleep, unsigned int *ms);
 unsigned int	get_current_ms(pthread_mutex_t	*lock);
-/*philo_utils_two.c*/
+/*philo_init.c*/
 int				check_args(int argc, char **argv);
 int				data_init(t_data *data, int ac, char **av);
 /*philo_set_forks.c*/

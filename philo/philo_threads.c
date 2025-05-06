@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:20:19 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/06 17:08:01 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 00:41:09 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	single_thread_create(t_data *data)
 	int	checker;
 
 	checker = 0;
+	data->ms.ms = get_current_ms(&data->ms.lock);
 	checker = pthread_create(&data->philos[0].thread, NULL,
 			lonely_simulation, &(data->philos[0]));
 	if (checker != 0)
@@ -36,7 +37,7 @@ int	multi_thread_create(t_data *data)
 
 	i = 0;
 	checker = 0;
-	data->ms.ms = get_current_ms(&data->ms_lock);
+	data->ms.ms = get_current_ms(&data->ms.lock);
 	while (i < data->philo_count)
 	{
 		checker = pthread_create(&data->philos[i].thread, NULL,

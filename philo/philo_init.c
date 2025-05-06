@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/05 21:59:06 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 00:40:21 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	philo_init(t_data *data, char **av)
 		data->philos[i].time_to_eat = ft_atoi(av[3]);
 		data->philos[i].time_to_sleep = ft_atoi(av[4]);
 		data->philos[i].g_ms = &data->ms;
-		data->philos[i].ms_lock = &data->ms_lock;
+		data->philos[i].ms_lock = &data->ms.lock;
 		data->philos[i].printf_lock = temp;
 		pthread_mutex_init(&data->philos[i].food_count.lock, NULL);
 		i++;
@@ -75,8 +75,7 @@ static void	philo_init(t_data *data, char **av)
 int	data_init(t_data *data, int ac, char **av)
 {
 	data->philo_count = ft_atoi(av[1]);
-	pthread_mutex_init(&data->ms_lock, NULL);
-	data->ms.ms = get_current_ms(&data->ms_lock);
+	pthread_mutex_init(&data->ms.lock, NULL);
 	data->philos = (t_philo *)malloc(data->philo_count * sizeof(t_philo));
 	if (!data->philos)
 		return (0);

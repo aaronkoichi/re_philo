@@ -6,11 +6,12 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 16:22:04 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/05 20:43:38 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 00:52:31 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <pthread.h>
 
 /*After they done sleeping, let them sleep again for a bit.
  * No Need to announce*/
@@ -92,11 +93,9 @@ void	*simulation(void *args)
 	int			dead_check;
 
 	philo = (t_philo *)args;
-	philo->p_ms.ms = 0;
 	dead_check = get_status(philo);
 	if (philo->philo_num % 2 == 0)
-		usleep(500);
-	set_philo_ms(philo, get_current_ms(philo->ms_lock));
+		p_doom_sleep(philo);
 	while (dead_check != 1)
 	{
 		p_think_eat(philo);
