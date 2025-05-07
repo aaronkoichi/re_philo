@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/07 00:09:54 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 14:15:57 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	*monitor(void *args)
 	status = get_data_status(data);
 	while (status != 1)
 	{
+		usleep(500);
 		check_all_state(data);
 		if (get_data_status(data) == 1)
 			break ;

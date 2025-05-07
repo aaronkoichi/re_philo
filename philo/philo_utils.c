@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:59:10 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/01 15:59:42 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 15:00:17 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ unsigned int	ft_atoi(const char *nptr)
 	multiple = 1;
 	total = 0;
 	index = count_ws(nptr);
-	if (nptr[index] == '+')
-		index++;
 	while (nptr[index] >= '0' && nptr[index] <= '9')
 		total = (total * 10) + (nptr[index++] - 48);
 	return (total * multiple);
