@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:57:15 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/07 14:15:57 by zlee             ###   ########.fr       */
+/*   Updated: 2025/05/07 15:41:20 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,13 @@ static void	check_state(t_philo *philo)
 
 	num = get_ms_passed_philo(philo);
 	action = get_action(philo);
-	if (action == THINK || action == SLEEP)
+	if (num >= philo->time_to_die)
 	{
-		if (num >= philo->time_to_die)
-		{
-			pthread_mutex_lock(philo->printf_lock);
-			printf("%d %d died\n", get_ms_psd_gbl(philo),
-				philo->philo_num);
-			set_status(philo, 1);
-			pthread_mutex_unlock(philo->printf_lock);
-		}
+		pthread_mutex_lock(philo->printf_lock);
+		printf("%d %d died\n", get_ms_psd_gbl(philo),
+			philo->philo_num);
+		set_status(philo, 1);
+		pthread_mutex_unlock(philo->printf_lock);
 	}
 }
 
@@ -70,7 +67,6 @@ void	*monitor(void *args)
 	status = get_data_status(data);
 	while (status != 1)
 	{
-		usleep(500);
 		check_all_state(data);
 		if (get_data_status(data) == 1)
 			break ;
@@ -78,6 +74,7 @@ void	*monitor(void *args)
 			if (check_meals(data))
 				set_data_status(data, 1);
 		status = get_data_status(data);
+		usleep(500);
 	}
 	return (NULL);
 }
