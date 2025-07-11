@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:06:26 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/07 00:40:21 by zlee             ###   ########.fr       */
+/*   Updated: 2025/07/11 19:03:55 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	init_dead(t_data *data)
 
 int	check_args(int argc, char **argv)
 {
-	if (ft_atoi(argv[1]) && ft_atoi(argv[2]) && ft_atoi(argv[3])
-		&& ft_atoi(argv[4]))
+	if (valid_checker(argv[1]) && ft_atoi(argv[1]) && valid_checker(argv[2])
+		&& valid_checker(argv[3]) && valid_checker(argv[4]))
 	{
 		if (argc == 6)
 		{
-			if (ft_atoi(argv[5]))
+			if (valid_checker(argv[5]))
 				return (1);
 			else
 				return (0);

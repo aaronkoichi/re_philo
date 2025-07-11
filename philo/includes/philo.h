@@ -6,7 +6,7 @@
 /*   By: zlee <zlee@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:27:18 by zlee              #+#    #+#             */
-/*   Updated: 2025/05/07 00:47:36 by zlee             ###   ########.fr       */
+/*   Updated: 2025/07/11 19:00:41 by zlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,6 @@ void			pickup_left_fork(t_philo *phi);
 void			pickup_right_fork(t_philo *phi);
 /* philo_print.c */
 void			ft_print(t_philo *phi, enum e_action act);
+// philo_num_check.c 
+int				valid_checker(char *str);
 #endif
